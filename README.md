@@ -51,7 +51,7 @@ You can eval:
 # Y.ou can evaluate and change the evaluation setting depending on `config/eval_config`.
 python eval.py
 ```
-We provide pre-trained weights for Anomaly-ShapeNet to ensure repeatability. You can download it in this project.
+We provide pre-trained weights for Anomaly-ShapeNet to ensure repeatability. You can download it in this project. Given the length limitations of anonymous github, we have placed it in the supplementary material at this [link](111).
 
 ## Intraclass-Variance Benchmark
 This is a dataset with intraclass variance called Anomaly-ShapeNet-Intraclass-Variance. This data contains 8 classes in both PCD and OBJ formats. The training dataset contains two normal samples each of two subcategories under the same broad category (four in total). The test dataset contains normal samples and multiple anomalies in both subcategories. Here are the **Statistical Data.**
@@ -80,6 +80,7 @@ The industrial test dataset used will be released upon acceptance, taking into a
 | radio         | 4             | 4        | 25       | 8       | 7     | 4     | 7     | 55    |
 | vase          | 4             | 4        | 32       | 12      | 8     | 4     | 8     | 68    |
 | xbox          | 4             | 4        | 29       | 11      | 8     | 3     | 8     | 63    |
+
 # Acknowledge
 This work was helped by the author of [PO3AD](https://arxiv.org/abs/2412.12617) and motivated by our previous work [ISMP](https://arxiv.org/abs/2412.13461). If possible, please cite them.
 ```bibtex
