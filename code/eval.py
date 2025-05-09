@@ -25,8 +25,8 @@ def load_checkpoint(model, pretrain_file, gpu=0):
 def eval(cfgs):
     global cfg
     cfg = cfgs
-    from network.PO3AD import PONet as net
-    from network.PO3AD import eval_fn
+    from network.MC4AD import MC4AD as net
+    from network.MC4AD import eval_fn
     use_cuda = torch.cuda.is_available()
     assert use_cuda
     model = net(cfg.in_channels, cfg.out_channels)
