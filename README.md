@@ -51,7 +51,7 @@ You can eval:
 # Y.ou can evaluate and change the evaluation setting depending on `config/eval_config`.
 python eval.py
 ```
-We will provide pre-trained weights to ensure repeatability after acceptance.
+We will provide pre-trained weights after acceptance.
 
 ## Intraclass-Variance Benchmark
 This is a dataset with intraclass variance called Anomaly-ShapeNet-Intraclass-Variance. This data contains 8 classes in both PCD and OBJ formats. The training dataset contains two normal samples each of two subcategories under the same broad category (four in total). The test dataset contains normal samples and multiple anomalies in both subcategories. Here are the **Statistical Data.**
