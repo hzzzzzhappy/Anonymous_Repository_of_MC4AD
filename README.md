@@ -1,5 +1,10 @@
 # Repository_of_MC4AD
+Hanzhe Liang, Aoran Wang, Jie Zhou, Xin Jin, Can Gao, Jinbao Wang
+
 😊 This is the official implementation of the 3D Anomaly Detection paper: ‘Examining Defects from a Mechanical Perspective for 3D Anomaly Detection’.
+
+![image](https://github.com/hzzzzzhappy/TA-3DAD/blob/main/overview.png)
+
 
 We have provided the code for MC4AD. Please follow the steps below to configure your environment.
 ## Environments
