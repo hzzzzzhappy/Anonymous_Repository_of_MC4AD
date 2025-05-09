@@ -5,9 +5,9 @@ from network.Mink import Mink_unet as unet3d
 import numpy as np
 import open3d as o3d
 
-class PONet(nn.Module):
+class MC4AD(nn.Module):
     def __init__(self, in_channels, out_channels):
-        super(PONet, self).__init__()
+        super(MC4AD, self).__init__()
         self.backbone = unet3d(in_channels=in_channels, out_channels=out_channels, arch='MinkUNet34C')
         self.linear_offset = nn.Sequential(
             nn.Linear(out_channels, out_channels, bias=False),
@@ -77,7 +77,7 @@ def model_fn(batch, model, cfg):
     direction_diff = - (unit_in * unit_ex).sum(-1)  
     direction_loss = torch.mean(direction_diff)
     
-    sym_loss = 0.7 * magnitude_loss + 0.3 * direction_loss
+    sym_loss = magnitude_loss + direction_loss
     ####################################################################
     pt_dist = torch.sum(torch.abs(pt_diff), dim=-1)  # [N]    float32  :sum l1
     valid = torch.ones(pt_dist.shape[0]).cuda()  # # get valid num
