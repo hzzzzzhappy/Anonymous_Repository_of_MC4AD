@@ -1,11 +1,11 @@
 # Repository_of_MC4AD
-Hanzhe Liang, Aoran Wang, Jie Zhou, Xin Jin, Can Gao, Jinbao Wang
+Hanzhe Liang, Aoran Wang, Jie Zhou, Xin Jin, Can Gao*, Jinbao Wang*  
 
-😊 This is the official implementation of the 3D Anomaly Detection paper: ‘Examining the Source of Defects from a Mechanical Perspective for 3D Anomaly Detection’.
-
-We have provided the code for MC4AD. Please follow the steps below to configure your environment.
+\* Co-Corresponding If you have problem, please send email to Hanzhe Liang
 
 ![image](https://github.com/hzzzzzhappy/MC4AD/blob/main/overview.png)
+
+😊 This is the official implementation of the 3D Anomaly Detection paper: ‘Examining the Source of Defects from a Mechanical Perspective for 3D Anomaly Detection’. We have provided the code for MC4AD. Please follow the steps below to configure your environment.
 
 ## Environments
 ### You need to create our environment. Our code runs on the device CUDA 11.1. If you do not have any environments already created, please run:
