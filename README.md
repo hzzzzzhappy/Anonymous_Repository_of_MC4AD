@@ -40,12 +40,13 @@ code
 ```
 ## Training & Evaluation
 ### Eval
-### Train
+
 You can train and change the train setting depending on ```config/train_config```:
 ```bash
 python train.py --category bowl4 --logpath ./log/cap0/
 # We take class cap0 for example; you can also replace 'cap0' with the class you want.
 ```
+### Train
 You can eval:
 ```bash
 # Y.ou can evaluate and change the evaluation setting depending on `config/eval_config`.
