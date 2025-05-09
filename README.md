@@ -1,9 +1,9 @@
-# Anonymous_Repository_of_MC4AD
-😊 This is the official anonymous implementation of the 3D Anomaly Detection paper: ‘Examining Defects from a Mechanical Perspective for 3D Anomaly Detection’.
+# Repository_of_MC4AD
+😊 This is the official implementation of the 3D Anomaly Detection paper: ‘Examining Defects from a Mechanical Perspective for 3D Anomaly Detection’.
 
 We have provided the code for MC4AD. Please follow the steps below to configure your environment.
 ## Environments
-### You need to create our environment. Our code run in the device CUDA11.1. If you do not have any environments already created, please run:
+### You need to create our environment. Our code runs on the device CUDA11.1. If you do not have any environments already created, please run:
 ```bash
 conda create -n py3-TA python=3.8
 conda activate py3-TA
@@ -84,7 +84,7 @@ The industrial test dataset used will be released upon acceptance, taking into a
 | xbox          | 4             | 4        | 29       | 11      | 8     | 3     | 8     | 63    |
 
 # Acknowledge
-This code partly from [PO3AD](https://arxiv.org/abs/2412.12617) and [ISMP](https://arxiv.org/abs/2412.13461). If possible, please cite them.
+This code partly from [PO3AD](https://arxiv.org/abs/2412.12617) [Anomaly-ShapeNet](https://github.com/Chopper-233/Anomaly-ShapeNet) and [ISMP](https://arxiv.org/abs/2412.13461). If possible, please cite them.
 ```bibtex
 @misc{ye2024po3adpredictingpointoffsets,
       title={PO3AD: Predicting Point Offsets toward Better 3D Point Cloud Anomaly Detection}, 
@@ -94,6 +94,15 @@ This code partly from [PO3AD](https://arxiv.org/abs/2412.12617) and [ISMP](https
       archivePrefix={arXiv},
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2412.12617}, 
+}
+
+@InProceedings{Li_2024_CVPR,
+    author    = {Li, Wenqiao and Xu, Xiaohao and Gu, Yao and Zheng, Bozhong and Gao, Shenghua and Wu, Yingna},
+    title     = {Towards Scalable 3D Anomaly Detection and Localization: A Benchmark via 3D Anomaly Synthesis and A Self-Supervised Learning Network},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2024},
+    pages     = {22207-22216}
 }
 
 @misc{liang2025lookinsidemoreinternal,
