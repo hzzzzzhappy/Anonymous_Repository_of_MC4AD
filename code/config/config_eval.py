@@ -11,9 +11,9 @@ def get_parser():
     parser.add_argument('--num_works', type=int, default=4, help='num_works for dataset')
     parser.add_argument('--pretrain', type=str, default='', help='path to pretrain model')
     parser.add_argument('--save_freq', type=int, default=1, help='Pre-training model saving frequency(epoch)')
-    parser.add_argument('--logpath', type=str, default='./log/cap5/', help='path to save logs')
+    parser.add_argument('--logpath', type=str, default='./log/the class name/', help='path to save logs')
     parser.add_argument('--validation', type=bool, default=False, help='Whether to verify the validation set')
-    parser.add_argument('--checkpoint_name', type=str, default='000001847.pth', help='checkpoint name')
+    parser.add_argument('--checkpoint_name', type=str, default='the class name.pth', help='checkpoint name')
     parser.add_argument('--gpu_id', type=str, default='0', help='gpu id')
 
     # #Dataset setting
