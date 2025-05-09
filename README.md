@@ -34,10 +34,6 @@ code
 │   │   ├── dataset
 │   │   │   ├── obj
 │   │   │   ├── pcd
-│   ├── Real3D
-│   │   ├── dataset
-│   │   │   ├── pLY
-│   │   │   ├── pcd
 ├── log
 │   ├── ashtray0
 │   │   ├── ashtray0.pth
