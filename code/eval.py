@@ -61,8 +61,6 @@ def eval(cfgs):
         else:
             if cfg.dataset == 'AnomalyShapeNet':
                 gt_mask = np.loadtxt(gt_mask_path + sample_name + '.txt', delimiter=',')[:, 3:].squeeze(1)
-            elif cfg.dataset == 'Real3D':
-                gt_mask = np.loadtxt(gt_mask_path + sample_name + '.txt')[:, 3:].squeeze(1)
             gt_masks.append(gt_mask)
         score, pred_mask = eval_fn(batch, model)
         pred_mask = pred_mask.detach().cpu().abs().sum(dim=-1).numpy()
