@@ -46,6 +46,7 @@ You can train and change the train setting depending on ```config/train_config``
 python train.py --category bowl4 --logpath ./log/cap0/
 # We take class cap0 for example; you can also replace 'cap0' with the class you want.
 ```
+Partly class need to train about 2000 epoches.
 ### Train
 You can eval:
 ```bash
