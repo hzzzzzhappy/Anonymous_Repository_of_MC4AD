@@ -83,7 +83,7 @@ The industrial test dataset used will be released upon acceptance, taking into a
 | xbox          | 4             | 4        | 29       | 11      | 8     | 3     | 8     | 63    |
 
 # Acknowledge
-This work was motivated by our previous work [PO3AD](https://arxiv.org/abs/2412.12617) and [ISMP](https://arxiv.org/abs/2412.13461). If possible, please cite them.
+This work was motivated by previous work [PO3AD](https://arxiv.org/abs/2412.12617) and [ISMP](https://arxiv.org/abs/2412.13461). If possible, please cite them.
 ```bibtex
 @misc{ye2024po3adpredictingpointoffsets,
       title={PO3AD: Predicting Point Offsets toward Better 3D Point Cloud Anomaly Detection}, 
