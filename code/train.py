@@ -109,8 +109,6 @@ def SingleCard_training(cfgs):
     # load dataset
     if cfg.dataset == 'AnomalyShapeNet':
         from datasets.AnomalyShapeNet.dataset_preprocess import Dataset
-    elif cfg.dataset == 'Real3D':
-        from datasets.Real3D.dataset_preprocess import Dataset
     else:
         print('do not support this dataset at present')
 
