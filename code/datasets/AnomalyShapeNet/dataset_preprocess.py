@@ -69,26 +69,37 @@ class Dataset:
                                            drop_last=False, pin_memory=False,
                                            worker_init_fn=self._worker_init_fn_)
 
-    def generate_pseudo_anomaly(self, points, normals, center, distance_to_move=0.08, elongation=np.random.uniform(0.95, 1.0)):
-        direction = np.random.randn(3)
-        direction /= np.linalg.norm(direction) 
-        vec_to_center = points - center
-        
-        proj = np.dot(vec_to_center, direction)  
-        
-        distances_to_center = np.linalg.norm(vec_to_center, axis=1) 
-        stretch_ratio = 1 - elongation  
-        adjusted_distances = distances_to_center * (1 - stretch_ratio * np.abs(proj)/np.max(np.abs(proj)))
-        max_distance = np.max(adjusted_distances)
-        movement_ratios = 1 - (adjusted_distances / max_distance)
-        movement_ratios = (movement_ratios - np.min(movement_ratios)) / (
-                    np.max(movement_ratios) - np.min(movement_ratios))
-    
-        directions = np.ones(points.shape[0]) * np.random.choice([-1, 1])
-        movements = movement_ratios * distance_to_move * directions
-        new_points = points + np.abs(normals) * movements[:, np.newaxis]
-    
-        return new_points
+    def generate_pseudo_anomaly(
+            self, 
+            points, 
+            normals, 
+            center, 
+            distance_to_move=random.uniform(0.06, 0.12),  
+            sigma=random.uniform(0, 0.08),            
+            lambda_val=random.uniform(0.95, 1)      
+        ):
+            
+            eta = np.random.randn(3)
+            eta /= np.linalg.norm(eta)
+            
+            vec_to_center = points - center
+            proj = np.dot(vec_to_center, eta) 
+            proj_normalized = proj / np.max(np.abs(proj)) 
+            spatial_attenuation = 1 - sigma * np.abs(proj_normalized)  
+            distances_to_center = np.linalg.norm(vec_to_center, axis=1) 
+            beta = np.random.choice([-1, 1])
+            combined_dirs = lambda_val * normals + (1 - lambda_val) * eta  
+            combined_dirs_normalized = combined_dirs / np.linalg.norm(combined_dirs, axis=1, keepdims=True) 
+            movement_magnitude = (
+                beta * 
+                distance_to_move * 
+                proj_normalized * 
+                spatial_attenuation
+            )  
+            displacements = combined_dirs_normalized * movement_magnitude[:, np.newaxis]  # shape: (N,3)
+            
+            new_points = points + displacements
+            return new_points
 
     def trainMerge(self, id):
         file_name = []
