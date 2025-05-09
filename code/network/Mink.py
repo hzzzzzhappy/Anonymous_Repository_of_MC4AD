@@ -6,27 +6,17 @@ from MinkowskiEngine.modules.resnet_block import BasicBlock, Bottleneck
 class GMRSkip(nn.Module):
     def __init__(self, enc_channels, dec_channels, D=3):
         super().__init__()
-        # 将编码器特征投影到解码器通道空间
         self.enc_proj = ME.MinkowskiConvolution(
             enc_channels, dec_channels, kernel_size=1, dimension=D
         )
-        # 解码器特征增强
         self.dec_enhance = ME.MinkowskiConvolution(
-            dec_channels, dec_channels, kernel_size=3, dimension=D
-        )
-        # 动态权重（自动学习编码-解码贡献比）
+            dec_channels, dec_channels, kernel_
         self.alpha = ME.MinkowskiConvolution(dec_channels, 1, kernel_size=1, dimension=D)
         
     def forward(self, x_enc, x_dec):
-        # 投影编码器特征到解码器空间
-        enc_feat = self.enc_proj(x_enc)  # [N, dec_channels]
-        # 增强解码器特征
-        dec_feat = self.dec_enhance(x_dec)  # [N, dec_channels]
-        
-        # 生成空间自适应权重
-        alpha = ME.MinkowskiSigmoid()(self.alpha(dec_feat))  # [N, 1]
-        
-        # 加权融合
+        enc_feat = self.enc_proj(x_enc) 
+        dec_feat = self.dec_enhance(x_dec)  
+        alpha = ME.MinkowskiSigmoid()(self.alpha(dec_feat))
         ones = ME.SparseTensor(
             features=torch.ones_like(alpha.F),
             coordinate_map_key=alpha.coordinate_map_key,
@@ -140,7 +130,6 @@ class ResNetBase(nn.Module):
         x = self.glob_pool(x)
         return self.final(x)
 
-# #Unet
 class MinkUNetBase(ResNetBase):
     BLOCK = BasicBlock
     PLANES = (32, 64, 128, 256, 256, 128, 96, 96)
@@ -150,10 +139,8 @@ class MinkUNetBase(ResNetBase):
     def __init__(self, in_channels, out_channels, D=3):
         super().__init__(in_channels, out_channels, D)
         
-        # 验证PLANES配置
         assert len(self.PLANES) == 8, "PLANES"
         
-        # 初始化GMR模块（严格匹配各层通道）
         self.gmr1 = GMRSkip(
             enc_channels=self.PLANES[2] * self.BLOCK.expansion,
             dec_channels=self.PLANES[4],
@@ -176,17 +163,13 @@ class MinkUNetBase(ResNetBase):
         )
 
     def network_initialization(self, in_channels, out_channels, D):
-        # 初始化编码器（保持不变）
         self.inplanes = self.INIT_DIM
         self.conv0p1s1 = ME.MinkowskiConvolution(in_channels, self.inplanes, kernel_size=5, dimension=D)
         self.bn0 = ME.MinkowskiBatchNorm(self.inplanes)
-        
-        # 下采样层（保持不变）
         self.conv1p1s2 = ME.MinkowskiConvolution(self.inplanes, self.inplanes, kernel_size=2, stride=2, dimension=D)
         self.bn1 = ME.MinkowskiBatchNorm(self.inplanes)
         self.block1 = self._make_layer(self.BLOCK, self.PLANES[0], self.LAYERS[0])
-        
-        # 中间编码层（保持不变）
+
         self.conv2p2s2 = ME.MinkowskiConvolution(self.inplanes, self.inplanes, kernel_size=2, stride=2, dimension=D)
         self.bn2 = ME.MinkowskiBatchNorm(self.inplanes)
         self.block2 = self._make_layer(self.BLOCK, self.PLANES[1], self.LAYERS[1])
@@ -199,7 +182,6 @@ class MinkUNetBase(ResNetBase):
         self.bn4 = ME.MinkowskiBatchNorm(self.inplanes)
         self.block4 = self._make_layer(self.BLOCK, self.PLANES[3], self.LAYERS[3])
 
-        # 解码器上采样层（维度严格校验）
         self.convtr4p16s2 = ME.MinkowskiConvolutionTranspose(
             in_channels=self.inplanes,
             out_channels=self.PLANES[4],
@@ -209,11 +191,9 @@ class MinkUNetBase(ResNetBase):
         )
         self.bntr4 = ME.MinkowskiBatchNorm(self.PLANES[4])
         
-        # 通道数验证：PLANES[4] + PLANES[2]*expansion
         self.inplanes = self.PLANES[4] + self.PLANES[2] * self.BLOCK.expansion
         self.block5 = self._make_layer(self.BLOCK, self.PLANES[4], self.LAYERS[4])
         
-        # 后续层保持相同模式...
         self.convtr5p8s2 = ME.MinkowskiConvolutionTranspose(
             self.inplanes, self.PLANES[5], kernel_size=2, stride=2, dimension=D)
         self.bntr5 = ME.MinkowskiBatchNorm(self.PLANES[5])
@@ -245,7 +225,6 @@ class MinkUNetBase(ResNetBase):
         self.relu = ME.MinkowskiReLU(inplace=True)
 
     def forward(self, x):
-        # --------------------- Encoder ---------------------
         out = self.conv0p1s1(x)
         out = self.bn0(out)
         out_p1 = self.relu(out)  
@@ -261,13 +240,10 @@ class MinkUNetBase(ResNetBase):
         out = self.bn3(out)
         out = self.relu(out)
         out_b3p8 = self.block3(out)  
-        # --------------------- Bottleneck ---------------------
         out = self.conv4p8s2(out_b3p8)
         out = self.bn4(out)
         out = self.relu(out)
-        out = self.block4(out)  # PLANES[3]=256
-        
-        # --------------------- Decoder ---------------------
+        out = self.block4(out)  
         # Level 4: 16 -> 8
         out = self.convtr4p16s2(out)  
         out = self.bntr4(out)
