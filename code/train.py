@@ -88,8 +88,8 @@ def SingleCard_training(cfgs):
     writer = SummaryWriter(cfg.logpath)
 
     logger.info('=> creating model ...')
-    from network.PO3AD import PONet as net
-    from network.PO3AD import model_fn
+    from network.MC4AD import MC4AD as net
+    from network.MC4AD import model_fn
     use_cuda = torch.cuda.is_available()
     assert use_cuda
     model = net(cfg.in_channels, cfg.out_channels)
