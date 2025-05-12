@@ -1,4 +1,4 @@
-name: py-TA
+name: MC4AD
 channels:
   - pytorch
   - conda-forge
