@@ -3,6 +3,8 @@ Hanzhe Liang, Aoran Wang, Jie Zhou, Xin Jin, Can Gao*, Jinbao Wang*
 
 \* Co-Corresponding
 
+For the paper, you can check the following [link](https://arxiv.org/abs/2505.05901v2).
+
 ![image](https://github.com/hzzzzzhappy/MC4AD/blob/main/overview.png)
 
 ## Environments
