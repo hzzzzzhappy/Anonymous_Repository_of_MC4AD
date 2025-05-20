@@ -3,6 +3,8 @@
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/examining-the-source-of-defects-from-a/3d-anomaly-detection-on-real-3d-ad)](https://paperswithcode.com/sota/3d-anomaly-detection-on-real-3d-ad?p=examining-the-source-of-defects-from-a)
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/examining-the-source-of-defects-from-a/3d-anomaly-detection-and-segmentation-on)](https://paperswithcode.com/sota/3d-anomaly-detection-and-segmentation-on?p=examining-the-source-of-defects-from-a)
+
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/examining-the-source-of-defects-from-a/3d-anomaly-detection-on-anomaly-shapenet10)](https://paperswithcode.com/sota/3d-anomaly-detection-on-anomaly-shapenet10?p=examining-the-source-of-defects-from-a)
 
 Hanzhe Liang, Aoran Wang, Jie Zhou, Xin Jin, Can Gao*, Jinbao Wang*  
