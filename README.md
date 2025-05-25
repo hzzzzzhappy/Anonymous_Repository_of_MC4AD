@@ -13,6 +13,15 @@ Hanzhe Liang, Aoran Wang, Jie Zhou, Xin Jin, Can Gao*, Jinbao Wang*
 
 For the paper, you can check the following [link](https://arxiv.org/abs/2505.05901v2).
 
+## To Do List
+[O] Eval Code 2025/4/30 You can start testing now.
+
+[O] Checkpoints 2025/5/25 You can now load [weights](https://huggingface.co/HanzheL/MC4AD) to reproduce all results on Anomaly-ShapeNet.
+
+[ ] Train Code
+
+[ ] Datasets
+
 ![image](https://github.com/hzzzzzhappy/MC4AD/blob/main/overview.png)
 
 ## Environments
