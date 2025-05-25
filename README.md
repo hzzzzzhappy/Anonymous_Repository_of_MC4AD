@@ -33,6 +33,7 @@ pip install -U git+https://github.com/NVIDIA/MinkowskiEngine -v --no-deps --inst
 cd MinkowskiEngine
 python setup.py install --blas_include_dirs=${CONDA_PREFIX}/include --blas=openblas
 ```
+Or you can download the environment zip at this [link](https://huggingface.co/datasets/HanzheL/ENVIROMENT_MC4AD).
 ## Datasets
 Please download the datasets we used. You can download [Real3D-AD dataset](https://github.com/M-3LAB/Real3D-AD?tab=readme-ov-file) and [Anomaly-ShapeNet&Anomaly-ShapeNet-New](https://github.com/Chopper-233/Anomaly-ShapeNet). We provide dataload for Real3D-AD, Anomaly-ShapeNet, and Anomaly-ShapeNet-New. if you want to implement [MvTec3D-AD](https://www.mvtec.com/company/research/datasets/mvtec-3d-ad), you need to go to the official implementation of [M3DM](https://github.com/nomewang/M3DM/blob/main/m3dm_runner.py), which is attributed to the fact that MvTec3D-AD uses depth maps, and you need to use the preprocessing tools and conversion tools it provide to change it to a point cloud form. Put the data and checkpoints in the corresponding folders:
 ```bash
