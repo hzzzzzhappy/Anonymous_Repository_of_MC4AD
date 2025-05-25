@@ -64,7 +64,6 @@ You can eval:
 # Y.ou can evaluate and change the evaluation setting depending on `config/eval_config`.
 python eval.py
 ```
-We will provide pre-trained weights after acceptance.
 
 ## To Do List
 [O] Eval Code 2025/4/30 You can start testing now.
