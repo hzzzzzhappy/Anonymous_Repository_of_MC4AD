@@ -13,14 +13,7 @@ Hanzhe Liang, Aoran Wang, Jie Zhou, Xin Jin, Can Gao*, Jinbao Wang*
 
 For the paper, you can check the following [link](https://arxiv.org/abs/2505.05901v2).
 
-## To Do List
-[O] Eval Code 2025/4/30 You can start testing now.
 
-[O] Checkpoints 2025/5/25 You can now load [weights](https://huggingface.co/HanzheL/MC4AD) to reproduce all results on Anomaly-ShapeNet.
-
-[ ] Train Code
-
-[ ] Datasets
 
 ![image](https://github.com/hzzzzzhappy/MC4AD/blob/main/overview.png)
 
@@ -58,13 +51,13 @@ code
 ```
 ## Training & Evaluation
 ### Eval
-
+First, you need to download the [checkpoints](https://huggingface.co/HanzheL/MC4AD) and input into the file ```log```.
 You can train and change the train setting depending on ```config/train_config```:
 ```bash
 python train.py --category bowl4 --logpath ./log/cap0/
 # We take class cap0 for example; you can also replace 'cap0' with the class you want.
 ```
-Partly class need to train about 2000 epoches.
+The partly class needs to train about 2000 epochs.
 ### Train
 You can eval:
 ```bash
@@ -72,6 +65,15 @@ You can eval:
 python eval.py
 ```
 We will provide pre-trained weights after acceptance.
+
+## To Do List
+[O] Eval Code 2025/4/30 You can start testing now.
+
+[O] Checkpoints 2025/5/25 You can now load [checkpoints](https://huggingface.co/HanzheL/MC4AD) to reproduce all results on Anomaly-ShapeNet.
+
+[ ] Train Code
+
+[ ] Datasets
 
 ## Intraclass-Variance Benchmark
 This is a dataset with intraclass variance called Anomaly-ShapeNet-Intraclass-Variance. This data contains 8 classes in both PCD and OBJ formats. The training dataset contains two normal samples each of two subcategories under the same broad category (four in total). The test dataset contains normal samples and multiple anomalies in both subcategories. Here are the **Statistical Data.**
